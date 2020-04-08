@@ -2,7 +2,7 @@ use std::collections::LinkedList;
 use piston_window::{Context, G2d};
 use piston_window::types::Color;
 
-use draw::draw_block;
+use crate::draw::draw_block;
 
 const SNAKE_COLOR: Color = [0.00, 0.80, 0.00, 1.0];
 
@@ -55,7 +55,7 @@ impl Snake {
         });
 
         Snake {
-            direction: Direction::right,
+            direction: Direction::Right,
             body,
             tail: None,
         }
@@ -108,7 +108,7 @@ impl Snake {
         self.direction
     }
 
-    pub next_head(&self, dir: Option<Direction>) -> (i32, i32) {
+    pub fn next_head(&self, dir: Option<Direction>) -> (i32, i32) {
         let(head_x, head_y): (i32, i32) = self.head_position();
 
         let mut moving_dir = self.direction;
@@ -138,7 +138,7 @@ impl Snake {
                 return true;
             }
 
-            ch += 1
+            ch += 1;
             if ch == self.body.len() -1 {
                 break;
             }
